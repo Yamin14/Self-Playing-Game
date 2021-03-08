@@ -90,7 +90,7 @@ class Game(Widget):
 				if j != i and j not in self.blacklisted and i not in self.blacklisted:
 					if self.xl[i]+30 >= self.xl[j] and self.xl[i]+30 <= self.xl[j]+60 and self.yl[i]+30 >= self.yl[j] and self.yl[i]+30 <= self.yl[j]+60:
 						sum_j = self.colours[j][0] + self.colours[j][1] + self.colours[j][2]
-						if sum_i > sum_j:
+						if sum_i >= sum_j:
 							self.xl[j] = 900
 							self.yl[j] = -100
 							self.blacklisted.append(j)
@@ -98,13 +98,7 @@ class Game(Widget):
 							self.xl[i] = 900
 							self.yl[i] = -100
 							self.blacklisted.append(i)
-						elif sum_i == sum_j:
-							self.xl[i] = 900
-							self.yl[i] = -100
-							self.xl[j] = 900
-							self.yl[j] = -100
-							self.blacklisted.append(i)
-							self.blacklisted.append(j)
+			
 			
 			#check winner
 			if self.count - len(self.blacklisted) == 1:
